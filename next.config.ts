@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "picsum.photos", // Allow images from this domain
       },
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com", // Allow images from this domain
+      }
     ],
   },
   /* config options here */
