@@ -2,8 +2,9 @@
 
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toast from '../components/Toast'
+import Image from 'next/image'
 
 type Song = {
     id: number;
@@ -22,7 +23,7 @@ type Playlist = {
 }
 
 export default function Music() {
-    const { user, isAuthenticated, loading, logout } : any = useAuth();
+    const { isAuthenticated, loading } : any = useAuth();
     const router = useRouter();
     const [songs, setSongs] = useState<Song[] | null>(null);
     const [message, setMessage] = useState('');
@@ -57,6 +58,7 @@ export default function Music() {
                 setMessage('No songs saved!')
             }
             } catch (err) {
+                console.log(err);
                 setMessage('Error fetching profile songs')
             } finally {
                 console.log('here2')
@@ -84,6 +86,7 @@ export default function Music() {
             }
           }
         } catch (err) {
+              console.log(err);
               setMessage('Error fetching profile songs')
         } finally {
               // console.log('here2')
@@ -103,7 +106,7 @@ export default function Music() {
                 });
 
                 if (res.ok) {
-                    const data = await res.json();
+                    // const data = await res.json();
                     const updatedSongs : any = songs?.filter((song) => song.genius_id !== songId);
                     setSongs(updatedSongs);
                     setShowToast(true);
@@ -113,7 +116,9 @@ export default function Music() {
                     console.log('err')
                 }
             } catch (err) {
-                    setMessage('Error fetching profile songs')
+                console.log(err);
+                console.log(message);
+                setMessage('Error fetching profile songs')
             } finally {
                 console.log('here2')
             }
@@ -147,10 +152,10 @@ export default function Music() {
 
                                 <div className="w-full h-full flex flex-col p-4 border-2 rounded-lg border-gray-300 rounded-lg">
                                     {playlist.name == 'Favorites' ? 
-                                    <img src={`https://i1.sndcdn.com/artworks-y6qitUuZoS6y8LQo-5s2pPA-t1080x1080.jpg`}></img> :
-                                    <img src={`https://picsum.photos/250/${playlist.id + 200}`} />}
+                                    <Image alt="spotify favorite playlist image" src={`https://i1.sndcdn.com/artworks-y6qitUuZoS6y8LQo-5s2pPA-t1080x1080.jpg`} /> :
+                                    <Image alt="random playlist image" src={`https://picsum.photos/250/${playlist.id + 200}`} />}
                                     <h1 className="font-semibold text-lg text-black mt-3">{playlist.name}</h1>
-                                    <img className="h-5 w-16 mt-6" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png"/>
+                                    <Image alt="spotify logo" className="h-5 w-16 mt-6" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png"/>
                                 </div>
                             </div>
                         ))}

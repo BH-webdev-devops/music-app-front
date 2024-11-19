@@ -1,14 +1,11 @@
 'use client';
-import Image from "next/image";
-
 import { useAuth } from './context/AuthContext';
 import { useRouter } from 'next/navigation';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toast from './components/Toast'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 type Song = {
   id: number;
@@ -29,7 +26,7 @@ type Playlist = {
 
 export default function Home() {
 
-  const { user, isAuthenticated, loading, logout } : any = useAuth();
+  const { isAuthenticated, loading } : any = useAuth();
   const router = useRouter();
   const [songs, setSongs] = useState<Song[] | null>(null);
   const [message, setMessage] = useState('');
@@ -69,6 +66,7 @@ export default function Home() {
         }
       }
     } catch (err) {
+          console.log(err);
           setMessage('Error fetching profile songs')
     } finally {
           // console.log('here2')
@@ -95,6 +93,7 @@ export default function Home() {
               setSongs(null)
             }
           } catch (err) {
+              console.log(err);
               setMessage('Error fetching profile songs')
           } finally {
               // console.log('here2')
@@ -142,6 +141,7 @@ export default function Home() {
           }
         }
       } catch (err) {
+          console.log(err);
           setMessage('Error saving playlist')
       } finally {
           // console.log('here2')
@@ -206,7 +206,7 @@ export default function Home() {
             });
 
             if (res.ok) {
-                const data = await res.json();
+                // const data = await res.json();
                 setMessage(`Song was removed from your playlist!`);
                 const updatedSongs : any = songs?.map((song) =>
                   song.id === songId ? { ...song, isSaved: false } : song
@@ -220,6 +220,7 @@ export default function Home() {
             }
         } catch (err) {
                 setMessage('Error fetching profile songs')
+                console.log(err);
         } finally {
             console.log('here2')
         }

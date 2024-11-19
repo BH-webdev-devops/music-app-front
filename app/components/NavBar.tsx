@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useAuth } from '../context/AuthContext';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Search', href: '/' },
@@ -15,21 +15,19 @@ const navigation = [
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { isAuthenticated, loading, logout } : any = useAuth();
-  const router = useRouter(); 
-
 
   return (
     <header className="bg-white">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Bauhaus</span>
-            <img
-              alt=""
+            <Image
+              alt="Bauhaus logo"
               src="/images.png"
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
         </div>
         {isAuthenticated && (
           <div className="hidden lg:flex lg:gap-x-12">
@@ -86,7 +84,7 @@ export default function NavBar() {
           <div className="flex items-center gap-x-6">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Bauhaus</span>
-              <img
+              <Image
                 alt=""
                 src="/images.png"
                 className="h-8 w-auto"

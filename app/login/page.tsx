@@ -1,8 +1,9 @@
 'use client'
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useAuth } from '../context/AuthContext';
 import {useRouter} from 'next/navigation';
+import Image from 'next/image'
 
 export default function LogIn() {
 
@@ -31,7 +32,7 @@ export default function LogIn() {
       <>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img
+            <Image
               alt="Bauhaus"
               src="/images.png"
               className="mx-auto h-10 w-auto"
