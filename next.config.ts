@@ -20,4 +20,5 @@ const nextConfig: NextConfig = {
   /* config options here */
 };
 
+// eslint-disable-next-line
 export default nextConfig;

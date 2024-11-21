@@ -1,25 +1,29 @@
-# Use a Node.js base image
-FROM node:18.17
-
-# Set the working directory
+# Stage 1: Install dependencies and build the app
+FROM node:18 AS builder
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package files and install dependencies
+COPY package.json package-lock.json ./
+RUN npm install --legacy-peer-deps
 
-# Install dependencies
-RUN npm install
-
-# Copy TypeScript source code
+# Copy all files and build the app
 COPY . .
+RUN npm run build
 
-# Install TypeScript globally
-RUN npm install -g typescript
+# Stage 2: Create a production image
+FROM node:18 AS runner
+WORKDIR /app
 
-# Compile TypeScript to JavaScript
-RUN tsc
+# Install only production dependencies
+COPY package.json package-lock.json ./
+RUN npm install --production --legacy-peer-deps
 
-# Expose the port the app will run on
-EXPOSE 8080
+# Copy the built app from the builder stage
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
 
-CMD npm run dev
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Run the Next.js app
+CMD ["npm", "start"]
