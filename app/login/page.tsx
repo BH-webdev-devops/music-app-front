@@ -36,6 +36,8 @@ export default function LogIn() {
               alt="Bauhaus"
               src="/images.png"
               className="mx-auto h-10 w-auto"
+              width={500} 
+              height={300}
             />
             <h2 className="mt-10 text-center taext-2xl/9 font-bold tracking-tight text-gray-900">
               Sign in to your account

@@ -26,6 +26,8 @@ export default function NavBar() {
               alt="Bauhaus logo"
               src="/images.png"
               className="h-8 w-auto"
+              width={500} 
+              height={300}
             />
           </Link>
         </div>
@@ -88,6 +90,8 @@ export default function NavBar() {
                 alt=""
                 src="/images.png"
                 className="h-8 w-auto"
+                width={500} 
+                height={300}
               />
             </a>
             {!isAuthenticated && !loading && (

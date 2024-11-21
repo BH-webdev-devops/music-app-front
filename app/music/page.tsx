@@ -46,7 +46,7 @@ export default function Music() {
         const token = localStorage.getItem('token');
         if (token) {
             try {
-            const res = await fetch(`https://week4-group-project.onrender.com/api/songs/${selectedPlaylist}`, {
+            const res = await fetch(`https://node-glen-413936355529.europe-west1.run.app/api/songs/${selectedPlaylist}`, {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` },
             });
@@ -73,7 +73,7 @@ export default function Music() {
     
           if (token) {
       
-            const res = await fetch(`https://week4-group-project.onrender.com/api/playlists`, {
+            const res = await fetch(`https://node-glen-413936355529.europe-west1.run.app/api/playlists`, {
               method: 'GET',
               headers: { 'Authorization': `Bearer ${token}` },
             });
@@ -100,7 +100,7 @@ export default function Music() {
         if (token) {
 
             try {
-                const res = await fetch(`https://week4-group-project.onrender.com/api/songs/${songId}`, {
+                const res = await fetch(`https://node-glen-413936355529.europe-west1.run.app/api/songs/${songId}`, {
                     method: 'DELETE',
                     headers: {'Authorization': `Bearer ${token}`},
                 });
@@ -152,10 +152,26 @@ export default function Music() {
 
                                 <div className="w-full h-full flex flex-col p-4 border-2 rounded-lg border-gray-300 rounded-lg">
                                     {playlist.name == 'Favorites' ? 
-                                    <Image alt="spotify favorite playlist image" src={`https://i1.sndcdn.com/artworks-y6qitUuZoS6y8LQo-5s2pPA-t1080x1080.jpg`} /> :
-                                    <Image alt="random playlist image" src={`https://picsum.photos/250/${playlist.id + 200}`} />}
+                                    <Image 
+                                        alt="spotify favorite playlist image" 
+                                        src={`https://i1.sndcdn.com/artworks-y6qitUuZoS6y8LQo-5s2pPA-t1080x1080.jpg`} 
+                                        width={500} 
+                                        height={300}
+                                    /> :
+                                    <Image 
+                                        alt="random playlist image" 
+                                        src={`https://picsum.photos/250/${playlist.id + 200}`} 
+                                        width={500} 
+                                        height={300}
+                                    />}
                                     <h1 className="font-semibold text-lg text-black mt-3">{playlist.name}</h1>
-                                    <Image alt="spotify logo" className="h-5 w-16 mt-6" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png"/>
+                                    <Image 
+                                        alt="spotify logo" 
+                                        className="h-5 w-16 mt-6" 
+                                        src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png"
+                                        width={500} 
+                                        height={300}
+                                    />
                                 </div>
                             </div>
                         ))}

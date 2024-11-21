@@ -50,6 +50,8 @@ const Register = () => {
                         alt="Your Company"
                         src="/images.png"
                         className="mx-auto h-10 w-auto"
+                        width={500} 
+                        height={300}
                     />
                     <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
                         Register a new account
