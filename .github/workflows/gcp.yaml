@@ -23,9 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-      
-      - name: Build Next.js app
-        run: npm run build
           
       - name: Google Auth
         id: auth
