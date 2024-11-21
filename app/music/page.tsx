@@ -159,10 +159,11 @@ export default function Music() {
                                     /> :
                                     <img 
                                         alt="random playlist image" 
-                                        src={`https://picsum.photos/250/${playlist.id + 200}`} 
+                                        src={`https://picsum.photos/250/240`} 
                                         width={500} 
                                         height={300}
-                                    />}
+                                    />
+                                    }
                                     <h1 className="font-semibold text-lg text-black mt-3">{playlist.name}</h1>
                                     <img 
                                         alt="spotify logo" 
