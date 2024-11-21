@@ -154,13 +154,13 @@ export default function Music() {
                                     <img 
                                         alt="spotify favorite playlist image" 
                                         src={`https://i1.sndcdn.com/artworks-y6qitUuZoS6y8LQo-5s2pPA-t1080x1080.jpg`} 
-                                        width={500} 
+                                        width={400} 
                                         height={300}
                                     /> :
                                     <img 
                                         alt="random playlist image" 
-                                        src={`https://picsum.photos/250/2`} 
-                                        width={500} 
+                                        src={`/${Math.floor(Math.random() * 6) + 1}.jpeg`}
+                                        width={400} 
                                         height={300}
                                     />
                                     }
@@ -169,8 +169,6 @@ export default function Music() {
                                         alt="spotify logo" 
                                         className="h-5 w-16 mt-6" 
                                         src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png"
-                                        width={500} 
-                                        height={300}
                                     />
                                 </div>
                             </div>
