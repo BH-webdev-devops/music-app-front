@@ -159,7 +159,7 @@ export default function Music() {
                                     /> :
                                     <img 
                                         alt="random playlist image" 
-                                        src={`https://picsum.photos/250/240`} 
+                                        src={`https://picsum.photos/250/2`} 
                                         width={500} 
                                         height={300}
                                     />
