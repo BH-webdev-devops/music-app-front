@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Toast from '../components/Toast'
-import Image from 'next/image'
 
 type Song = {
     id: number;
@@ -152,20 +151,20 @@ export default function Music() {
 
                                 <div className="w-full h-full flex flex-col p-4 border-2 rounded-lg border-gray-300 rounded-lg">
                                     {playlist.name == 'Favorites' ? 
-                                    <Image 
+                                    <img 
                                         alt="spotify favorite playlist image" 
                                         src={`https://i1.sndcdn.com/artworks-y6qitUuZoS6y8LQo-5s2pPA-t1080x1080.jpg`} 
                                         width={500} 
                                         height={300}
                                     /> :
-                                    <Image 
+                                    <img 
                                         alt="random playlist image" 
                                         src={`https://picsum.photos/250/${playlist.id + 200}`} 
                                         width={500} 
                                         height={300}
                                     />}
                                     <h1 className="font-semibold text-lg text-black mt-3">{playlist.name}</h1>
-                                    <Image 
+                                    <img 
                                         alt="spotify logo" 
                                         className="h-5 w-16 mt-6" 
                                         src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png"
